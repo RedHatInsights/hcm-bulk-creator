@@ -18,6 +18,14 @@ if [[ ! -f $INPUT ]]; then
     exit 1
 fi
 
+# healthcheck (checking the credentials)
+curl -s --fail -u $USER:$PASSWORD https://console.redhat.com/api/sources/v3.1/sources >/dev/null
+if [[ $? != 0 ]]; then
+    echo "Authentication failed - check your USER/PASSWORD variables."
+    exit 1
+fi
+
+# do the uploading!
 for i in $(cat $INPUT); do
     # skipping the first line (if copied from example.csv)
     if [[ $i == "Name,AccessKey,Secret" ]]; then
@@ -36,7 +44,7 @@ for i in $(cat $INPUT); do
         sed "s/TSECRET/$secret/g"
     )
 
-    curl -s -XPOST \
+    curl --fail -s -XPOST \
         -u $USER:$PASSWORD \
         -d "$msg" \
         https://console.redhat.com/api/sources/v3.1/bulk_create >/dev/null
