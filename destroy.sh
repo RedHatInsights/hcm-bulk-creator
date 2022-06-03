@@ -16,7 +16,7 @@ for i in $(cat $INPUT); do
     id=$(curl --fail -s -XGET \
         -u $USER:$PASSWORD \
         "https://console.redhat.com/api/sources/v3.1/sources?name=$name" \
-    | jq .data[0].id)
+    | jq -r .data[0].id)
 
     if [[ $? != 0 ]]; then
         echo "Error fetching source $name"

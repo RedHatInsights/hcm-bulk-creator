@@ -1,24 +1,24 @@
 {
   "sources": [
-    { 
-      "name": "TNAME" , 
-      "source_type_name": "amazon", 
-      "app_creation_workflow": "account_authorization" 
+    {
+      "name": "TNAME" ,
+      "source_type_name": "amazon",
+      "app_creation_workflow": "account_authorization"
     }
   ],
   "applications": [
-    { 
-      "source_name": "TNAME", 
-      "application_type_name": "cost" 
+    {
+      "source_name": "TNAME",
+      "application_type_name": "cost"
     }
   ],
   "authentications": [
-    { 
-      "resource_type": "source", 
-      "resource_name": "TNAME", 
-      "authtype": "access_key_secret_key", 
-      "username": "TACCESS", 
-      "password": "TSECRET" 
+    {
+      "resource_type": "source",
+      "resource_name": "TNAME",
+      "authtype": "access_key_secret_key",
+      "username": "TACCESS",
+      "password": "TSECRET"
     }
   ]
 }
