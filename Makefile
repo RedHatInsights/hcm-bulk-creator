@@ -1,4 +1,8 @@
-all: upload
+all:
+	@echo "run 'make upload' to create sources, 'make destroy' to destroy them."
 
-upload:
-	bash upload.sh
+create:
+	bash create.sh
+
+destroy:
+	bash destroy.sh
